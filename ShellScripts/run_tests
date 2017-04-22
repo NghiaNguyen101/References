@@ -1,0 +1,31 @@
+#!/bin/bash
+# a simple way to test everything
+
+if [ $# -eq 2 ]; then
+   for file in $( ls tests/inputs/* ); do
+      echo -n "Testing with ${file} -- "
+      
+      BASE=`basename ${file} .in`
+   
+      # program testing
+      ./mytr $1 $2 < ${file} > tests/outputs/${BASE}.out
+       tr $1 $2 < ${file} > tests/expected/${BASE}.expect 
+      
+      # compare result
+      diff tests/outputs/${BASE}.out tests/expected/${BASE}.expect &> tests/outputs/${BASE}.diff
+
+      if [ $? -eq 0 ]; then
+         echo "Succeeded"
+         
+       	# comment out these lines to retain output and diff files
+			\rm tests/outputs/${BASE}.out
+			\rm tests/outputs/${BASE}.diff  
+      else
+        echo "Failed"
+        echo "   See difference in tests/outputs/${BASE}.diff"
+      fi
+   done   
+else
+   echo "Usage: ./run_tests [-d SET] [SET1 SET2]"
+fi
+

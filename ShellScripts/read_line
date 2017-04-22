@@ -1,0 +1,17 @@
+#!/bin/sh 
+# Takes a filename as input and prints it line by line 
+# Also prints the fourth token in each line 
+
+cat $1
+
+while read MYline
+do 
+
+echo $MYline
+
+FOUR=$(echo $MYline | cut -f4 -d' ')
+
+echo "------Fourth Token:  $FOUR ------------------"
+
+ 
+done < $1

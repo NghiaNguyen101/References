@@ -1,0 +1,28 @@
+#!/bin/sh
+
+inc=0 
+
+echo inc = "$inc" 
+
+inc=$(expr $inc + 1) 
+
+echo inc = "$inc" 
+
+inc=$(expr $inc + 1) 
+
+echo inc = "$inc" 
+
+sum=$(expr '5 + 7')
+echo sum  = "$sum"
+
+sum=$(expr  5 + 7)
+echo sum  = "$sum"
+
+sum=$(expr  "5 + 7")
+echo sum  = "$sum"
+
+Tarih='$date'
+echo Tarih = $Tarih
+
+Tarih=$(date)
+echo Tarih = $Tarih

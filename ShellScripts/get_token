@@ -1,0 +1,31 @@
+#!/usr/bin/env bash  
+names='tom jerry henry' 
+ 
+echo mynames=$names 
+new=$(echo $names | cut -f1 -d' ') 
+ 
+echo first token in names=$new 
+ 
+new=$(echo $names | cut -f2 -d' ') 
+ 
+echo second token in names=$new 
+ 
+variable="Dennis" 
+ echo "$variable" 
+ 
+variable="Fikret" 
+ echo '$variable' 
+ 
+variable="Matt" 
+ echo $variable 
+ 
+res=$(echo '8*2' | bc) 
+echo result of operation 8*2 = $res 
+ 
+res=$(echo "8*2" | bc) 
+echo result of operation 8*2 = $res 
+ 
+res=8*2 
+echo result=$res 
+ 
+echo 'END.' 

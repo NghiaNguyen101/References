@@ -1,0 +1,32 @@
+#!/bin/sh 
+   echo " AWK Example " 
+   echo " " 
+
+   ps -acefl > tempFile    # store the process listing in a temporary file 
+
+   echo " Print only the PID column in the process listing for a given user " 
+   grep $1 tempFile | awk '{print $4}';    # notice that this listing is not accurate
+   echo " " 
+
+   
+   echo " Print only the status column in the process listing for a given user " 
+   grep $1 tempFile | awk '{print $2}'
+   echo " " 
+
+   echo " Print both the status and the column in the process listing for a given user " 
+   grep $1 tempFile | awk '{print $4 " Status --> " $2}'
+   echo " " 
+
+   echo " Print name, status, and PID columns " 
+   grep $1 tempFile | awk '{print $14 " : " $4 " Status --> " $2}'
+   echo " " 
+
+   echo " Print the processes owned by a given user " 
+   ouruser=$1
+   echo "user = $ouruser"
+   awk '{if ($3=="ercal") print;}' tempFile    
+
+  echo " Print the processes owned by a given user " 
+   ouruser=$1
+   echo "user = $ouruser"
+   awk '{if ($3=='$ouruser') print;}' tempFile    
